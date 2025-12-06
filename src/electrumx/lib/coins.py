@@ -4132,3 +4132,54 @@ class FerriteTestnet(Ferrite):
         'enode2.ferritecoin.org s t',
         'enode3.ferritecoin.org s t',
     ]
+
+class ScashMixin:
+    SHORTNAME = "SCASH"
+    NET = "mainnet"
+    XPUB_VERBYTES = bytes.fromhex("0488b21e")
+    XPRV_VERBYTES = bytes.fromhex("0488ade4")
+    RPC_PORT = 8342
+    
+class Scash(ScashMixin, Coin):
+    NAME = "Scash"
+    DESERIALIZER = lib_tx.DeserializerSegWit
+    HEADER_VALUES = ('version', 'prev_block_hash', 'merkle_root', 'timestamp',
+                     'bits', 'nonce', 'randomx_hash')
+    HEADER_UNPACK = struct.Struct('< I 32s 32s I I I 32s').unpack_from
+
+    # ---------- Address Prefixes ----------
+    # Base58 prefixes
+    P2PKH_VERBYTE = bytes.fromhex("00")
+    P2SH_VERBYTES = (bytes.fromhex("05"),)
+
+    #WIF
+    WIF_BYTE = bytes.fromhex("80")
+    ENCODE_CHECK = Base58.encode_check
+    DECODE_CHECK = Base58.decode_check
+
+    # Bech32 segwit HRP
+    BECH32_HRP = "scash"
+
+    # ---------- Block Headers ----------
+    BASIC_HEADER_SIZE = 112
+
+    # Static headers file, no header version changes
+    STATIC_BLOCK_HEADERS = True
+    GENESIS_HASH = ('e3bf1597a568216022dbda6a0945f09b'
+                    '005d19f041e7158c3cbca9d4029ee82d')
+
+    # ---------- Networking ----------
+
+    PEERS = []  # add DNS seeds here later
+
+    # ---------- Blockchain Statistics ----------
+    # Only used for sync progress estimation
+    TX_COUNT = 1
+    TX_COUNT_HEIGHT = 1
+    TX_PER_BLOCK = 1
+    
+        
+    # Optional: override to support bech32 HRP
+    @classmethod
+    def bech32_prefix(cls):
+        return cls.BECH32_HRP
