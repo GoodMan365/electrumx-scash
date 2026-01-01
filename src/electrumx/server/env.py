@@ -70,8 +70,7 @@ class Env(EnvBase):
         self.anon_logs = self.boolean('ANON_LOGS', False)
         self.log_sessions = self.integer('LOG_SESSIONS', 3600)
         self.log_level = self.default('LOG_LEVEL', 'info').upper()
-        #self.donation_address = self.default('DONATION_ADDRESS', '')
-        self.donation_address = "scash1qe8f9hhuvrqd9z40p7kpuae4xjagnk2g2qk2lf4"
+        self.donation_address = self.default('DONATION_ADDRESS', '')
         self.drop_client = self.custom("DROP_CLIENT", None, re.compile)
         self.blacklist_url = self.default('BLACKLIST_URL', self.coin.BLACKLIST_URL)
         self.cache_MB = self.integer('CACHE_MB', 1200)
