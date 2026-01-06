@@ -14,6 +14,9 @@ Language: Python (>= 3.10)
 This project is a fork of [kyuupichan/electrumx](https://github.com/kyuupichan/electrumx).
 The original author dropped support for Bitcoin, which we intend to keep.
 
+## FOR SCASH: [**📖 Full Electrumx-Scash Configuration →**](README_SCASH.md)
+
+
 ElectrumX allows users to run their own Electrum server. It connects to your
 full node and indexes the blockchain, allowing efficient querying of the history of
 arbitrary addresses. The server can be exposed publicly, and joined to the public network
