@@ -2,8 +2,6 @@
 
 ```
 Licence: MIT
-Original Author: Neil Booth
-ElectrumX Maintainers: The Electrum developers
 ElectrumX-SCASH Maintainers: GoodMan365
 Language: Python (>= 3.10)
 ```
@@ -354,6 +352,7 @@ maxuploadtarget=5000
 ```
 
 Hopefully it will work by now.
+
 
 
 
